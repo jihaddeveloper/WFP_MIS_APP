@@ -3,7 +3,7 @@
     "name": "WFP_MIS_APP",
     "slug": "WFP_MIS_APP",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
