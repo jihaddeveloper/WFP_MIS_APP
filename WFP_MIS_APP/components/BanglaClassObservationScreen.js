@@ -44,14 +44,14 @@ export default class BanglaClassObservationScreen extends Component {
           McGovern-Dole International Food for Education and Child Nutrition
           Program
         </Text>
-        <Text style={{ fontSize: 20 }}>Bangla Class Observation Form</Text>
+        <Text style={{ fontSize: 20 }}>বাংলা ক্লাস পর্যবেক্ষণ ফরম</Text>
 
         <ScrollView>
           <View style={{ padding: 10 }}>
             <Text style={styles.bigRedText}>সাধারণ তথ্য:</Text>
             <View style={{ flexDirection: "row", padding: 10 }}>
               <View style={{ flex: 1 }}>
-                <Text>স্কুলের নাম</Text>
+                <Text>বিদ্যালয়ের নাম </Text>
                 <TextInput
                   placeholder="..............."
                   style={{ justifyContent: "flex-start" }}
@@ -69,7 +69,7 @@ export default class BanglaClassObservationScreen extends Component {
                   <View style={{ flex: 1 }}>
                     <Text>তারিখ</Text>
                     <TextInput
-                      placeholder="DD/MM/YYYY"
+                      placeholder="দিন/মাস/বছর"
                       style={{ justifyContent: "flex-end" }}
                     />
                   </View>
@@ -85,7 +85,7 @@ export default class BanglaClassObservationScreen extends Component {
                 />
               </View>
               <View style={{ flex: 1 }}>
-                <Text>উপাধি</Text>
+                <Text>পদবী</Text>
                 <TextInput
                   placeholder="..............."
                   style={{ justifyContent: "flex-end" }}
@@ -99,15 +99,18 @@ export default class BanglaClassObservationScreen extends Component {
                   placeholder="..............."
                   style={{ justifyContent: "flex-start" }}
                 />
-                <Text>লিঙ্গ</Text>
+                <Text>জেন্ডার</Text>
                 <TextInput
                   placeholder="..............."
                   style={{ justifyContent: "flex-start" }}
                 />
               </View>
               <View style={{ flex: 1 }}>
+                <Text>
+                  সংশ্লিষ্ট বিষয়ে প্রশিক্ষণপ্রাপ্ত শিক্ষক পাঠ পরিচালনা করছেন
+                </Text>
                 <TextInput
-                  placeholder="Is the trained Teacher teaching specific subject ?"
+                  placeholder="..............."
                   style={{ justifyContent: "flex-end" }}
                 />
               </View>
@@ -116,66 +119,72 @@ export default class BanglaClassObservationScreen extends Component {
               <View style={{ flex: 1 }}>
                 <View style={{ flexDirection: "row" }}>
                   <View style={{ flex: 1 }}>
+                    <Text>শ্রেণী</Text>
                     <TextInput
-                      placeholder="Class"
+                      placeholder="..............."
                       style={{ justifyContent: "flex-start" }}
                     />
+                    <Text>শাখা</Text>
                     <TextInput
-                      placeholder="Section"
+                      placeholder="..............."
                       style={{ justifyContent: "flex-start" }}
                     />
                   </View>
                   <View style={{ flex: 1 }}>
+                    <Text>ক্লাস শুরুর সময়</Text>
                     <TextInput
-                      placeholder="Start time"
+                      placeholder="..............."
                       style={{ justifyContent: "flex-start" }}
                     />
+                    <Text>ক্লাস শেষের সময়</Text>
                     <TextInput
-                      placeholder="End time"
+                      placeholder="..............."
                       style={{ justifyContent: "flex-start" }}
                     />
                   </View>
                 </View>
               </View>
               <View style={{ flex: 1 }}>
+                <Text>পাঠ নং/ পাঠের নাম</Text>
                 <TextInput
-                  placeholder="Topic name or number"
+                  placeholder="..............."
                   style={{ justifyContent: "flex-end" }}
                 />
+                <Text>দিন</Text>
                 <TextInput
-                  placeholder="Name of the Day"
+                  placeholder="..............."
                   style={{ justifyContent: "flex-end" }}
                 />
               </View>
             </View>
             <View style={{ flexDirection: "row", padding: 10 }}>
               <View style={{ flex: 1 }}>
-                <Text>Admitted Children:</Text>
+                <Text>ভর্তিকৃত শিশুর সংখ্যা :</Text>
                 <TextInput
-                  placeholder="Girl"
+                  placeholder="মেয়ে"
                   style={{ justifyContent: "flex-start" }}
                 />
                 <TextInput
-                  placeholder="Boy"
+                  placeholder="ছেলে"
                   style={{ justifyContent: "flex-start" }}
                 />
                 <TextInput
-                  placeholder="Total"
+                  placeholder="মোট"
                   style={{ justifyContent: "flex-start" }}
                 />
               </View>
               <View style={{ flex: 1 }}>
-                <Text>Present Children:</Text>
+                <Text>উপস্থিত শিশুর সংখ্যা :</Text>
                 <TextInput
-                  placeholder="Girl"
+                  placeholder="মেয়ে"
                   style={{ justifyContent: "flex-start" }}
                 />
                 <TextInput
-                  placeholder="Boy"
+                  placeholder="ছেলে"
                   style={{ justifyContent: "flex-start" }}
                 />
                 <TextInput
-                  placeholder="Total"
+                  placeholder="মোট"
                   style={{ justifyContent: "flex-start" }}
                 />
               </View>
@@ -183,56 +192,59 @@ export default class BanglaClassObservationScreen extends Component {
           </View>
 
           <View style={{ padding: 10 }}>
-            <Text style={styles.bigRedText}>Notice</Text>
+            <Text style={styles.bigRedText}>নির্দেশনা </Text>
             <View style={{ flexDirection: "row", padding: 10 }}>
               <View style={{ flex: 1 }}>
                 <Text style={{ padding: 5 }}>
-                  1. If the teacher is trained, then observe.
+                  ১। সংশ্লিষ্ট বিষয়ে প্রশিক্ষণপ্রাপ্ত শিক্ষক কত্রিক পাঠ পরিচালিত
+                  হলেই কেবল সম্পূর্ণ পাঠ পর্যবেক্ষণ করুন ।
                 </Text>
                 <Text style={{ padding: 5 }}>
-                  2. Observe the total teaching, but pick priority.
+                  ২। সম্পূর্ণ পাঠ পর্যবেক্ষণ করুন তবে অগ্রাধিকার এরিয়ার ভিত্তিতে
+                  ভালো দিক ও সহায়তার ক্ষেত্রগুলা চিহ্নিত করুন ।
                 </Text>
                 <Text style={{ padding: 5 }}>
-                  2. Observe the total teaching, but pick priority.
+                  ৩। বাংলা পাঠ উপস্থাপন সংক্রান্ত 2-3 টি ভালো দিক উল্লেখ করুন।
                 </Text>
                 <Text style={{ padding: 5 }}>
-                  3. Mention 2-3 better way for Bangla reading.
+                  ৪। অগ্রাধিকার এরিয়ার ভিত্তিতে উপর ভিত্তিতে যে ১-২ টি
+                  ইনডিকেটরের উত্তর "না বা আংশিক" হয়েছে তার আলোকে সহায়তার জন্য
+                  অগ্রাধিকারভিত্তিক ইনডিকেটর উল্লেখ করুন
                 </Text>
                 <Text style={{ padding: 5 }}>
-                  4. Based on priority area, mention indicator for no or partial
-                  no.
+                  ৫। বাংলা পাঠ উন্নতির জন্য শিক্ষকের সাথে 2-3 সূচক আলোচনা করুন।
                 </Text>
                 <Text style={{ padding: 5 }}>
-                  5. Discuss 2-3 indicator with teacher to improve Bangla
-                  reading.
-                </Text>
-                <Text style={{ padding: 5 }}>
-                  6. Mention RoomToRead action, if needed.3. Mention 2-3 better
-                  way for Bangla reading.
+                  ৬। রুমটোরিড থেকে কোনো পদক্ষেপ গ্রহণের প্রয়োজন হলে উল্লেখ করুন
+                  ।
                 </Text>
               </View>
               <View style={{ flex: 1 }}>
                 <Text style={{ justifyContent: "flex-end" }}>
-                  Mention 1-2 points from last visit, to be improved
+                  ফলো-আপ করার জন্য গত পরিদর্শন থেকে প্রাপ্ত ১-২ টি বিষয় উল্লেখ
+                  করুন যেখানে উন্নতি প্রয়োজন ছিল ঃ
                 </Text>
                 <View style={{ flexDirection: "row" }}>
                   <View style={{ flex: 1 }}>
                     <View style={{ padding: 5 }}>
+                      <Text>1.</Text>
                       <TextInput
                         style={{ height: 40, padding: 5 }}
-                        placeholder="1."
+                        placeholder=".........."
                       ></TextInput>
                     </View>
                     <View style={{ padding: 5 }}>
+                      <Text>2.</Text>
                       <TextInput
                         style={{ height: 40, padding: 5 }}
-                        placeholder="2."
+                        placeholder=".........."
                       ></TextInput>
                     </View>
                     <View style={{ padding: 5 }}>
+                      <Text>3.</Text>
                       <TextInput
                         style={{ height: 40, padding: 5 }}
-                        placeholder="3."
+                        placeholder=".........."
                       ></TextInput>
                     </View>
                   </View>
@@ -242,35 +254,35 @@ export default class BanglaClassObservationScreen extends Component {
           </View>
 
           <View style={{ padding: 10 }}>
-            <Text style={styles.bigRedText}>Indicator Information</Text>
+            <Text style={styles.bigRedText}>ইনডিকেটর</Text>
             <View style={{ padding: 5 }}>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>Number</Text>
+                  <Text>ক্রমিক নং</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>Indicator</Text>
+                  <Text>ইনডিকেটর</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>Priority Area</Text>
+                  <Text>অগ্রাধিকার এরিয়া</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>Yes</Text>
+                  <Text>হ্যা</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>No</Text>
+                  <Text>না</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>Partial</Text>
+                  <Text>আংশিক</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>Comment</Text>
+                  <Text>মন্তব্য</Text>
                 </View>
               </View>
               <View style={{ flexDirection: "row" }}>
                 <Text>
-                  Teaching Period(Obseve from starting and overall point to be
-                  observe at last.)
+                  পাঠ চলাকালীন (পাঠ উপস্থাপনের শুরু থেকে দেখতে হবে এবং সার্বিক
+                  অংশের সূচকগুলা শেষে দেখতে হবে ।)
                 </Text>
               </View>
               <View style={{ flexDirection: "row" }}>
@@ -279,8 +291,9 @@ export default class BanglaClassObservationScreen extends Component {
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <Text>
-                    Teacher pronuntuation is correct for all letter and word,
-                    also allowing student for practice
+                    শিক্ষক ধ্বনি সচেতনাতার কাজে ব্যবহৃত সকল বর্ণ ও শব্দের ধ্বনি
+                    সঠিকভাবে উচ্চারণ করেছেন এবং শিক্ষাত্রিদের চর্চা করার সুযোগ
+                    দিয়েছেন ।
                   </Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
@@ -289,25 +302,25 @@ export default class BanglaClassObservationScreen extends Component {
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
-                    placeholder=""
+                    placeholder="........."
                   ></TextInput>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
-                    placeholder=""
+                    placeholder="........."
                   ></TextInput>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
-                    placeholder=""
+                    placeholder="........."
                   ></TextInput>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
-                    placeholder=""
+                    placeholder="........."
                   ></TextInput>
                 </View>
               </View>
@@ -317,8 +330,9 @@ export default class BanglaClassObservationScreen extends Component {
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <Text>
-                    Teacher reading is correct for all letter, letter and parts
-                    of word, also allowing student for practice.(if applicable)
+                    শিক্ষক সঠিকভাবে বর্ণ পড়া বা বর্ণ ও শব্দাংশ মিলিয়ে শব্দ পড়া
+                    শিখিয়েছেন এবং শিখাত্রিদের চর্চা করার সুযোগ দিয়েছেন ।
+                    (প্রযোজ্য ক্ষেত্রে)
                   </Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
@@ -327,25 +341,25 @@ export default class BanglaClassObservationScreen extends Component {
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
-                    placeholder=""
+                    placeholder="........."
                   ></TextInput>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
-                    placeholder=""
+                    placeholder="........."
                   ></TextInput>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
-                    placeholder=""
+                    placeholder="........."
                   ></TextInput>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
-                    placeholder=""
+                    placeholder="........."
                   ></TextInput>
                 </View>
               </View>
