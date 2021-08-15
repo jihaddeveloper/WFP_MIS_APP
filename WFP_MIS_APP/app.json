@@ -20,6 +20,9 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.rtr.wfp_mis_app",
+      "versionCode": 1,
+      "icon": "./assets/icon.png",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

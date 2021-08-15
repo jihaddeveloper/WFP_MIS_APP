@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { Component } from "react";
+import React from "react";
 import {
   StyleSheet,
   Text,
@@ -12,7 +12,7 @@ import {
 import BanglaClassObservationScreen from "./components/BanglaClassObservationScreen";
 import HomeScreen from "./components/HomeScreen";
 
-export default class App extends Component {
+export default class App extends React.Component {
   render() {
     return <BanglaClassObservationScreen />;
   }

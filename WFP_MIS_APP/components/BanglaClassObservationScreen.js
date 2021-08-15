@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   Image,
   ImageBackground,
@@ -8,9 +8,9 @@ import {
   Text,
   ScrollView,
   TextInput,
-  Picker,
 } from "react-native";
 import { color } from "react-native-reanimated";
+import { Checkbox } from "react-native-paper";
 import {
   Table,
   TableWrapper,
@@ -21,12 +21,13 @@ import {
   Cell,
 } from "react-native-table-component";
 
-export default class BanglaClassObservationScreen extends Component {
+export default class BanglaClassObservationScreen extends React.Component {
   state = {
-    choosenIndex: 0,
+    checked: false,
   };
 
   render() {
+    const { checked } = this.state;
     return (
       <View style={styles.container}>
         <Image
@@ -51,7 +52,7 @@ export default class BanglaClassObservationScreen extends Component {
             <Text style={styles.bigRedText}>সাধারণ তথ্য:</Text>
             <View style={{ flexDirection: "row", padding: 10 }}>
               <View style={{ flex: 1 }}>
-                <Text>বিদ্যালয়ের নাম </Text>
+                <Text>বিদ্যালয়ের নাম:</Text>
                 <TextInput
                   placeholder="..............."
                   style={{ justifyContent: "flex-start" }}
@@ -60,14 +61,14 @@ export default class BanglaClassObservationScreen extends Component {
               <View style={{ flex: 1 }}>
                 <View style={{ flexDirection: "row" }}>
                   <View style={{ flex: 1 }}>
-                    <Text>উপজেলা</Text>
+                    <Text>উপজেলা:</Text>
                     <TextInput
                       placeholder="..............."
                       style={{ justifyContent: "flex-start" }}
                     />
                   </View>
                   <View style={{ flex: 1 }}>
-                    <Text>তারিখ</Text>
+                    <Text>তারিখ:</Text>
                     <TextInput
                       placeholder="দিন/মাস/বছর"
                       style={{ justifyContent: "flex-end" }}
@@ -78,14 +79,14 @@ export default class BanglaClassObservationScreen extends Component {
             </View>
             <View style={{ flexDirection: "row", padding: 10 }}>
               <View style={{ flex: 1 }}>
-                <Text>পরিদর্শক এর নাম</Text>
+                <Text>পরিদর্শক এর নাম:</Text>
                 <TextInput
                   placeholder="..............."
                   style={{ justifyContent: "flex-start" }}
                 />
               </View>
               <View style={{ flex: 1 }}>
-                <Text>পদবী</Text>
+                <Text>পদবী:</Text>
                 <TextInput
                   placeholder="..............."
                   style={{ justifyContent: "flex-end" }}
@@ -94,49 +95,83 @@ export default class BanglaClassObservationScreen extends Component {
             </View>
             <View style={{ flexDirection: "row", padding: 10 }}>
               <View style={{ flex: 1 }}>
-                <Text>শ্রেণি শিক্ষকের নাম</Text>
+                <Text>শ্রেণি শিক্ষকের নাম:</Text>
                 <TextInput
                   placeholder="..............."
                   style={{ justifyContent: "flex-start" }}
                 />
-                <Text>জেন্ডার</Text>
-                <TextInput
-                  placeholder="..............."
-                  style={{ justifyContent: "flex-start" }}
-                />
+                <View style={{ flexDirection: "row" }}>
+                  <View style={{ flex: 1 }}>
+                    <Text>জেন্ডার:</Text>
+                  </View>
+                  <View style={{ flex: 1 }}>
+                    <Checkbox
+                      status={checked ? "checked" : "unchecked"}
+                      onPress={() => {
+                        this.setState({ checked: !checked });
+                      }}
+                    />
+                    <Text>মহিলা</Text>
+                  </View>
+                  <View style={{ flex: 1 }}>
+                    <Checkbox
+                      status={checked ? "checked" : "unchecked"}
+                      onPress={() => {
+                        this.setState({ checked: !checked });
+                      }}
+                    />
+                    <Text>পুরুষ</Text>
+                  </View>
+                </View>
               </View>
               <View style={{ flex: 1 }}>
                 <Text>
                   সংশ্লিষ্ট বিষয়ে প্রশিক্ষণপ্রাপ্ত শিক্ষক পাঠ পরিচালনা করছেন
                 </Text>
-                <TextInput
-                  placeholder="..............."
-                  style={{ justifyContent: "flex-end" }}
-                />
+                <View style={{ flexDirection: "row" }}>
+                  <View style={{ flex: 1 }}>
+                    <Checkbox
+                      status={checked ? "checked" : "unchecked"}
+                      onPress={() => {
+                        this.setState({ checked: !checked });
+                      }}
+                    />
+                    <Text>হ্যা</Text>
+                  </View>
+                  <View style={{ flex: 1 }}>
+                    <Checkbox
+                      status={checked ? "checked" : "unchecked"}
+                      onPress={() => {
+                        this.setState({ checked: !checked });
+                      }}
+                    />
+                    <Text>না</Text>
+                  </View>
+                </View>
               </View>
             </View>
             <View style={{ flexDirection: "row", padding: 10 }}>
               <View style={{ flex: 1 }}>
                 <View style={{ flexDirection: "row" }}>
                   <View style={{ flex: 1 }}>
-                    <Text>শ্রেণী</Text>
+                    <Text>শ্রেণী:</Text>
                     <TextInput
                       placeholder="..............."
                       style={{ justifyContent: "flex-start" }}
                     />
-                    <Text>শাখা</Text>
+                    <Text>শাখা:</Text>
                     <TextInput
                       placeholder="..............."
                       style={{ justifyContent: "flex-start" }}
                     />
                   </View>
                   <View style={{ flex: 1 }}>
-                    <Text>ক্লাস শুরুর সময়</Text>
+                    <Text>ক্লাস শুরুর সময়:</Text>
                     <TextInput
                       placeholder="..............."
                       style={{ justifyContent: "flex-start" }}
                     />
-                    <Text>ক্লাস শেষের সময়</Text>
+                    <Text>ক্লাস শেষের সময়:</Text>
                     <TextInput
                       placeholder="..............."
                       style={{ justifyContent: "flex-start" }}
@@ -145,12 +180,12 @@ export default class BanglaClassObservationScreen extends Component {
                 </View>
               </View>
               <View style={{ flex: 1 }}>
-                <Text>পাঠ নং/ পাঠের নাম</Text>
+                <Text>পাঠ নং/ পাঠের নাম:</Text>
                 <TextInput
                   placeholder="..............."
                   style={{ justifyContent: "flex-end" }}
                 />
-                <Text>দিন</Text>
+                <Text>দিন:</Text>
                 <TextInput
                   placeholder="..............."
                   style={{ justifyContent: "flex-end" }}
@@ -159,34 +194,52 @@ export default class BanglaClassObservationScreen extends Component {
             </View>
             <View style={{ flexDirection: "row", padding: 10 }}>
               <View style={{ flex: 1 }}>
-                <Text>ভর্তিকৃত শিশুর সংখ্যা :</Text>
-                <TextInput
-                  placeholder="মেয়ে"
-                  style={{ justifyContent: "flex-start" }}
-                />
-                <TextInput
-                  placeholder="ছেলে"
-                  style={{ justifyContent: "flex-start" }}
-                />
-                <TextInput
-                  placeholder="মোট"
-                  style={{ justifyContent: "flex-start" }}
-                />
+                <Text>ভর্তিকৃত শিশুর সংখ্যা:</Text>
+                <View style={{ flexDirection: "row" }}>
+                  <View style={{ flex: 1 }}>
+                    <Text>মেয়ে ঃ</Text>
+                    <Text>ছেলে ঃ</Text>
+                    <Text>মোট ঃ</Text>
+                  </View>
+                  <View style={{ flex: 1 }}>
+                    <TextInput
+                      placeholder="........"
+                      style={{ justifyContent: "flex-end" }}
+                    />
+                    <TextInput
+                      placeholder="........"
+                      style={{ justifyContent: "flex-end" }}
+                    />
+                    <TextInput
+                      placeholder="........"
+                      style={{ justifyContent: "flex-end" }}
+                    />
+                  </View>
+                </View>
               </View>
               <View style={{ flex: 1 }}>
                 <Text>উপস্থিত শিশুর সংখ্যা :</Text>
-                <TextInput
-                  placeholder="মেয়ে"
-                  style={{ justifyContent: "flex-start" }}
-                />
-                <TextInput
-                  placeholder="ছেলে"
-                  style={{ justifyContent: "flex-start" }}
-                />
-                <TextInput
-                  placeholder="মোট"
-                  style={{ justifyContent: "flex-start" }}
-                />
+                <View style={{ flexDirection: "row" }}>
+                  <View style={{ flex: 1 }}>
+                    <Text>মেয়ে ঃ</Text>
+                    <Text>ছেলে ঃ</Text>
+                    <Text>মোট ঃ</Text>
+                  </View>
+                  <View style={{ flex: 1 }}>
+                    <TextInput
+                      placeholder="........"
+                      style={{ justifyContent: "flex-end" }}
+                    />
+                    <TextInput
+                      placeholder="........"
+                      style={{ justifyContent: "flex-end" }}
+                    />
+                    <TextInput
+                      placeholder="........"
+                      style={{ justifyContent: "flex-end" }}
+                    />
+                  </View>
+                </View>
               </View>
             </View>
           </View>
@@ -227,24 +280,24 @@ export default class BanglaClassObservationScreen extends Component {
                 <View style={{ flexDirection: "row" }}>
                   <View style={{ flex: 1 }}>
                     <View style={{ padding: 5 }}>
-                      <Text>1.</Text>
+                      <Text>১.</Text>
                       <TextInput
                         style={{ height: 40, padding: 5 }}
-                        placeholder=".........."
+                        placeholder="................................................"
                       ></TextInput>
                     </View>
                     <View style={{ padding: 5 }}>
-                      <Text>2.</Text>
+                      <Text>২.</Text>
                       <TextInput
                         style={{ height: 40, padding: 5 }}
-                        placeholder=".........."
+                        placeholder="................................................"
                       ></TextInput>
                     </View>
                     <View style={{ padding: 5 }}>
-                      <Text>3.</Text>
+                      <Text>৩.</Text>
                       <TextInput
                         style={{ height: 40, padding: 5 }}
-                        placeholder=".........."
+                        placeholder="................................................"
                       ></TextInput>
                     </View>
                   </View>
@@ -258,36 +311,38 @@ export default class BanglaClassObservationScreen extends Component {
             <View style={{ padding: 5 }}>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>ক্রমিক নং</Text>
+                  <Text style={{ backgroundColor: "green" }}>ক্রমিক নং</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>ইনডিকেটর</Text>
+                  <Text style={{ backgroundColor: "green" }}>ইনডিকেটর</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>অগ্রাধিকার এরিয়া</Text>
+                  <Text style={{ backgroundColor: "green" }}>
+                    অগ্রাধিকার এরিয়া
+                  </Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>হ্যা</Text>
+                  <Text style={{ backgroundColor: "green" }}>হ্যা</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>না</Text>
+                  <Text style={{ backgroundColor: "green" }}>না</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>আংশিক</Text>
+                  <Text style={{ backgroundColor: "green" }}>আংশিক</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>মন্তব্য</Text>
+                  <Text style={{ backgroundColor: "green" }}>মন্তব্য</Text>
                 </View>
               </View>
               <View style={{ flexDirection: "row" }}>
-                <Text>
+                <Text style={{ backgroundColor: "green" }}>
                   পাঠ চলাকালীন (পাঠ উপস্থাপনের শুরু থেকে দেখতে হবে এবং সার্বিক
                   অংশের সূচকগুলা শেষে দেখতে হবে ।)
                 </Text>
               </View>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>1.</Text>
+                  <Text>১.</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <Text>
@@ -297,25 +352,34 @@ export default class BanglaClassObservationScreen extends Component {
                   </Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>2</Text>
+                  <Text>২</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder="........."
-                  ></TextInput>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>হ্যা</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder="........."
-                  ></TextInput>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>না</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder="........."
-                  ></TextInput>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>আংশিক</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
@@ -326,7 +390,7 @@ export default class BanglaClassObservationScreen extends Component {
               </View>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>2.</Text>
+                  <Text>২.</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <Text>
@@ -336,7 +400,34 @@ export default class BanglaClassObservationScreen extends Component {
                   </Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>1</Text>
+                  <Text>১</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>হ্যা</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>না</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>আংশিক</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
@@ -344,18 +435,145 @@ export default class BanglaClassObservationScreen extends Component {
                     placeholder="........."
                   ></TextInput>
                 </View>
+              </View>
+              <View style={{ flexDirection: "row" }}>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Text>৩.</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Text>
+                    শিক্ষক শব্দ ভাণ্ডারের শব্দগুলো অর্থসহ শিখিয়েছেন এবং
+                    শিক্ষার্থীদের শব্দগুলো ব্যবহার করে নতুন বাক্য গঠনের সুযোগ
+                    দিয়েছেন । (প্রযোজ্য ক্ষেত্রে)
+                  </Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Text>৩</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>হ্যা</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>না</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>আংশিক</Text>
+                </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
                     placeholder="........."
                   ></TextInput>
                 </View>
+              </View>
+              <View style={{ flexDirection: "row" }}>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Text>৪.</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Text>
+                    শিক্ষক শিক্ষার্থীদের সাবলিল পঠন (সঠিক গতি , শুদ্ধ উচ্চারণ ও
+                    অভিব্যাক্তি বজায় রেখে পড়া) উপস্থাপন করে দেখিয়েছেন এবং
+                    শিক্ষার্থীদের শব্দ ভাণ্ডারের শব্দগুলো অর্থসহ শিখিয়েছেন এবং
+                    শিক্ষাথ্রিদের শব্দগুলো ব্যবহার করে নতুন বাক্য গঠনের সুযোগ
+                    দিয়েছেন । (প্রযোজ্য ক্ষেত্রে)
+                  </Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Text>২</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>হ্যা</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>না</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>আংশিক</Text>
+                </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
                     placeholder="........."
                   ></TextInput>
                 </View>
+              </View>
+              <View style={{ flexDirection: "row" }}>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Text>৫.</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Text>
+                    সঠিক উত্তরের জন্য শিক্ষক শিক্ষার্থীদের সহায়ক প্রশ্ন করেছেন
+                    বা উত্তর খোঁজার কৌশল শিখিয়েছেন । (প্রযোজ্য ক্ষেত্রে)
+                  </Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Text>৩</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>হ্যা</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>না</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>আংশিক</Text>
+                </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
@@ -365,383 +583,336 @@ export default class BanglaClassObservationScreen extends Component {
               </View>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>3.</Text>
+                  <Text>৬.</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <Text>
-                    Teacher teaches vocabulary with meaning, allow student
-                    making new sentences with these word.(if applicable)
+                    শিক্ষক নির্দেশনা অনুযায়ী বর্ণ/ যুক্তবর্ণ / শব্দ / বাক্য
+                    লেখার কাজ করিয়েছেন । (প্রযোজ্য ক্ষেত্রে)
                   </Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>3</Text>
+                  <Text>২</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>হ্যা</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>না</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>আংশিক</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
-                    placeholder=""
+                    placeholder="........."
                   ></TextInput>
                 </View>
+              </View>
+              <View style={{ flexDirection: "row" }}>
+                <Text style={{ backgroundColor: "green" }}>
+                  সার্বিক (সমগ্র পাঠ উপস্থাপন সংশ্লিষ্ট)
+                </Text>
+              </View>
+              <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
+                  <Text>৭.</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Text>
+                    শিক্ষক শিখন-শিখানো কার্যক্রমে আমি করি-আমরা করি-তুমি কর
+                    পদ্ধতিটি ব্যাবহার করেছেন । (প্রযোজ্য ক্ষেত্রে)
+                  </Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Text>১</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>হ্যা</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>না</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>আংশিক</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
+                    placeholder="........."
                   ></TextInput>
                 </View>
               </View>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>4.</Text>
+                  <Text>৮.</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <Text>
-                    The teacher teaches fluent reading(correct speed, correct
-                    pronuntuation and action), and allow student to practice.(if
-                    applicable)
+                    শিক্ষক শিক্ষার্থীদের এককভাবে বা জুটিতে বা দলে পড়ার সুযোগ
+                    দিয়েছেন । (প্রযোজ্য ক্ষেত্রে)
                   </Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>2</Text>
+                  <Text>১</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>হ্যা</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>না</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>আংশিক</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
+                    placeholder="........."
                   ></TextInput>
                 </View>
               </View>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>5.</Text>
+                  <Text>৯.</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <Text>
-                    The teacher ask suplimentory question for correct answer or
-                    teaches to find answer.(if applicable)
+                    শিক্ষক নির্ধারিত সময়ের মধ্যে পাঠের সকল কাজ ধারাবাহিকভাবে
+                    সম্পন্ন করেছেন ।
                   </Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>3</Text>
+                  <Text>৩</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>হ্যা</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>না</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>আংশিক</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
+                    placeholder="........."
                   ></TextInput>
                 </View>
               </View>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>6.</Text>
+                  <Text>১০.</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <Text>
-                    The teacher teaches to write letter/joint
-                    letter/word/sentence as trained.(if applicable)
+                    শিক্ষক পাঠের শিখন-শিখানো কাজে সহায়ক উপকরণ (রুম টু রিড কর্তৃক
+                    প্রদত্ত) ব্যাবহার করেছেন ।
                   </Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>2</Text>
+                  <Text>২</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>হ্যা</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>না</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>আংশিক</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-              </View>
-              <View style={{ flexDirection: "row" }}>
-                <Text>Allover(all topics related.)</Text>
-              </View>
-              <View style={{ flexDirection: "row" }}>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <Text>7.</Text>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <Text>
-                    The teacher follows learn-teach, I Do - We Do - You Do
-                    method.(if applicable)
-                  </Text>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <Text>1</Text>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
+                    placeholder="........."
                   ></TextInput>
                 </View>
               </View>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>8.</Text>
+                  <Text>১১.</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <Text>
-                    The teacher allows student to read in single or team.(if
-                    applicable)
+                    শিক্ষার্থীদের বই, ওয়ার্কবুকের কাজ নিশ্চিত করে যে গত ভিজিটের
+                    পর পাঠের ধারাবাহিকতা অনুসারে অগ্রগতি হয়েছে ।
                   </Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>1</Text>
+                  <Text>২</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>হ্যা</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>না</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>আংশিক</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
+                    placeholder="........."
                   ></TextInput>
                 </View>
               </View>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>9.</Text>
+                  <Text>১২.</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <Text>
-                    The teacher complete all topic sequnetually in time.
+                    শিক্ষক ছেলে-মেয়ে, বিশেষ চাহিদা সম্পন্ন ও পিছিয়ে পড়া
+                    শিক্ষার্থীদেরকে পাঠের কাজে এবং মূল্যায়নে অংশ গ্রহণ করিয়েছেন
+                    ।
                   </Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>3</Text>
+                  <Text>১</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>হ্যা</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>না</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Checkbox
+                    status={checked ? "checked" : "unchecked"}
+                    onPress={() => {
+                      this.setState({ checked: !checked });
+                    }}
+                  />
+                  <Text>আংশিক</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-              </View>
-              <View style={{ flexDirection: "row" }}>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <Text>10.</Text>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <Text>
-                    The teacher uses tool(by RoomToRead) in learning-teaching
-                  </Text>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <Text>2</Text>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-              </View>
-              <View style={{ flexDirection: "row" }}>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <Text>11.</Text>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <Text>
-                    Students book, workbook work justify the periodic progress
-                    from last visit.
-                  </Text>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <Text>2</Text>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-              </View>
-              <View style={{ flexDirection: "row" }}>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <Text>12.</Text>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <Text>
-                    The teacher involves all boy-girl, physically challaged and
-                    weak student in learning and testing.
-                  </Text>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <Text>1</Text>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 40, padding: 5 }}
-                    placeholder=""
+                    placeholder="........."
                   ></TextInput>
                 </View>
               </View>
@@ -749,15 +920,15 @@ export default class BanglaClassObservationScreen extends Component {
           </View>
 
           <View style={{ padding: 10 }}>
-            <Text style={styles.bigRedText}>
-              Important points to be discussed with Class Teacher
+            <Text style={{ backgroundColor: "green" }}>
+              শ্রেণি শিক্ষকের সাথে আলোচনার জন্য গুরুত্বপূর্ণ কিছু বিষয় ঃ
             </Text>
             <View style={{ padding: 5 }}>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
                   <Text>
-                    Mention 2-3 indicators(priority area number) in where
-                    teacher was good
+                    শিক্ষক ভালো করেছেন এমন ২/৩ টি সূচক ( অগ্রুধিকার এরিয়ায়র
+                    নম্বর ) উল্লেখ করুন ।
                   </Text>
                 </View>
               </View>
@@ -765,27 +936,28 @@ export default class BanglaClassObservationScreen extends Component {
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
-                    placeholder="1. ......"
+                    placeholder="১. ....................."
                   ></TextInput>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
-                    placeholder="2. ......"
+                    placeholder="২. ....................."
                   ></TextInput>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
-                    placeholder="3. ......"
+                    placeholder="৩. ....................."
                   ></TextInput>
                 </View>
               </View>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
                   <Text>
-                    Pervileged teacher pick 1-2 indicator(area number) to self
-                    improvement and how to do.
+                    অগ্রাধিকারভিত্তিতে শিক্ষককে তার নিজস্ব উন্নয়নের জন্য যে ১/২
+                    টি সূচক (এরিয়ার নম্বর) চিহ্নিত করেছেন তা উল্লেখ করুন এবং
+                    তিনি তার উন্নয়ন এ কিভাবে এটি করবেন সেটি উল্লেখ করুন ।
                   </Text>
                 </View>
               </View>
@@ -793,26 +965,26 @@ export default class BanglaClassObservationScreen extends Component {
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
-                    placeholder="1. ......"
+                    placeholder="১. ...................................."
                   ></TextInput>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 40, padding: 5 }}
-                    placeholder="2. ......"
+                    placeholder="২. ...................................."
                   ></TextInput>
                 </View>
               </View>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>How to do.</Text>
+                  <Text>কিভাবে করবেন ঃ</Text>
                 </View>
               </View>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 80, padding: 5 }}
-                    placeholder="1. .............................."
+                    placeholder="১. ...................................................................................."
                   ></TextInput>
                 </View>
               </View>
@@ -820,20 +992,23 @@ export default class BanglaClassObservationScreen extends Component {
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 80, padding: 5 }}
-                    placeholder="2. .............................."
+                    placeholder="২. ...................................................................................."
                   ></TextInput>
                 </View>
               </View>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>Class teacher aim to do activities</Text>
+                  <Text>
+                    যে কাজ গুলো করার জন্য শ্রেণি শিক্ষক একমত হয়েছেন সেটি/ সেগুলো
+                    উল্লেখ করুন ।
+                  </Text>
                 </View>
               </View>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 60, padding: 5 }}
-                    placeholder="1. .............................."
+                    placeholder="১. ...................................................................................."
                   ></TextInput>
                 </View>
               </View>
@@ -841,7 +1016,7 @@ export default class BanglaClassObservationScreen extends Component {
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 60, padding: 5 }}
-                    placeholder="2. .............................."
+                    placeholder="২. ...................................................................................."
                   ></TextInput>
                 </View>
               </View>
@@ -849,66 +1024,38 @@ export default class BanglaClassObservationScreen extends Component {
           </View>
 
           <View style={{ padding: 10 }}>
-            <Text style={styles.bigRedText}>Assessment</Text>
+            <Text style={styles.bigRedText}>মূল্যায়ন ঃ </Text>
             <View style={{ padding: 5 }}>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
                   <Text style={{ backgroundColor: "green" }}>
-                    Select 5 students randomly and assess them
+                    দৈবচয়ন পদ্ধতিতে ৫ জন শিক্ষার্থী নির্বাচন করুন এবং সংক্ষিপ্ত
+                    মূল্যায়ন করুন ঃ
                   </Text>
                 </View>
               </View>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>Letter, Word or Sentence for assessment</Text>
+                  <Text>
+                    মূল্যায়নের জন্য নির্বাচিত বর্ণ, শব্দ অথবা বাক্য এখানে লিখুন
+                    ঃ{" "}
+                  </Text>
                 </View>
               </View>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
                     style={{ height: 120, padding: 5 }}
-                    placeholder=" .............................."
+                    placeholder=" ....................
+                    ..................................
+                    ..................................
+                    .................................."
                   ></TextInput>
                 </View>
               </View>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>Name of student</Text>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 20, padding: 5 }}
-                    placeholder="......"
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 20, padding: 5 }}
-                    placeholder="......"
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 20, padding: 5 }}
-                    placeholder="......"
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 20, padding: 5 }}
-                    placeholder="......"
-                  ></TextInput>
-                </View>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <TextInput
-                    style={{ height: 20, padding: 5 }}
-                    placeholder="......"
-                  ></TextInput>
-                </View>
-              </View>
-              <View style={{ flexDirection: "row" }}>
-                <View style={{ flex: 1, padding: 2 }}>
-                  <Text>Correct answer</Text>
+                  <Text>শিক্ষার্থীর নাম ঃ</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
@@ -943,7 +1090,7 @@ export default class BanglaClassObservationScreen extends Component {
               </View>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>Wrong answer</Text>
+                  <Text>সঠিক বলেছে ঃ</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
@@ -978,7 +1125,42 @@ export default class BanglaClassObservationScreen extends Component {
               </View>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flex: 1, padding: 2 }}>
-                  <Text>Total number</Text>
+                  <Text>ভুল বলেছে ঃ</Text>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <TextInput
+                    style={{ height: 20, padding: 5 }}
+                    placeholder="......"
+                  ></TextInput>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <TextInput
+                    style={{ height: 20, padding: 5 }}
+                    placeholder="......"
+                  ></TextInput>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <TextInput
+                    style={{ height: 20, padding: 5 }}
+                    placeholder="......"
+                  ></TextInput>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <TextInput
+                    style={{ height: 20, padding: 5 }}
+                    placeholder="......"
+                  ></TextInput>
+                </View>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <TextInput
+                    style={{ height: 20, padding: 5 }}
+                    placeholder="......"
+                  ></TextInput>
+                </View>
+              </View>
+              <View style={{ flexDirection: "row" }}>
+                <View style={{ flex: 1, padding: 2 }}>
+                  <Text>মোট সংখ্যা ঃ</Text>
                 </View>
                 <View style={{ flex: 1, padding: 2 }}>
                   <TextInput
@@ -1140,5 +1322,12 @@ const styles = StyleSheet.create({
     width: "80%",
     color: "#344953",
     justifyContent: "center",
+  },
+  checkboxContainer: {
+    flexDirection: "row",
+    marginBottom: 20,
+  },
+  checkbox: {
+    alignSelf: "center",
   },
 });
